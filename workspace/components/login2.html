@@ -17,6 +17,7 @@
 <body>
 
    <div id="login-example">
+       <user-header></user-header>
        <user-login></user-login>
    </div>
 
@@ -31,6 +32,14 @@
            <button @click="login">로그인</button>
        </div>
    </script>
+
+
+   <script type="text/x-template" id="header-template">
+    <header>
+        <h1>헤더</h1>
+    </header>
+    </script>
+
 
 
    <script>
@@ -48,6 +57,11 @@
                        auth.login(this.userid, this.password)
                    }
                }
+           }
+       )
+       Vue.component(
+           'user-header',{
+            template:'#header-template'
            }
        )
 
