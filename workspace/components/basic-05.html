@@ -13,28 +13,33 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 </head>
+
 <body>
+    <div id="app">
+        <item-desc v-bind:my-props-data="myItem"   v-bind:prop-data="myItem2" >
+     
+    </div>
 
-    <main id="main">
-            <div id="mountTarget"></div>
-    </main>
-    
     <script> 
-    
-    
-    var Profile = Vue.extend({
-        template: '<p> {{a}} from in {{from}}</p>',
-        data: function () {
-            return {
-                a: 'test',
-                from: 'seoul'
-            }
+        Vue.component('item-desc',{
+            props:{
+                myPropsData:{
+                    type:String
+                },
+                "prop-data":{
+                    type:String
+                },
+                
+            },
+            template:"<p>{{myPropsData}} 테스트 {{propData}} </p>",
+        })  
+        new Vue({
+            el:'#app',
+            data:{
+                myItem:'test',
+                myItem2:'sssss'
         }
-    })
-                 //마운트 대상
-    new Profile().$mount('#mountTarget')
-    new Vue({el:'#main'})
-
+        })
     </script>
 </body>
 </html>
